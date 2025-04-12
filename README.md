@@ -12,7 +12,6 @@ pnpm install
 pnpm dev
 ```
 
-
 ## Acknowledgments
 
 - [React](https://react.dev)
