@@ -47,7 +47,7 @@ export function LoginForm({
         </Link>
       </div>
       <div className="text-center text-sm">
-        Don&apos;t have an account?{' '}
+        Don't have an account?{' '}
         <Link
           href="/register"
           className="underline underline-offset-4 font-bold"
