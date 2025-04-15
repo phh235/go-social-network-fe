@@ -1,6 +1,6 @@
 'use client'
 
-import { Heart, House, LogIn, Plus, Search, UserRound } from 'lucide-react'
+import { Heart, House, Plus, Search, UserRound } from 'lucide-react'
 import { ModeToggle } from '../mode-toggle'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

@@ -1,7 +1,6 @@
 'use client'
+
 import { RegisterForm } from '@/components/register-form'
-import { GalleryVerticalEnd } from 'lucide-react'
-import Image from 'next/image'
 
 export default function RegisterPage() {
   return (
