@@ -1,6 +1,12 @@
 'use client'
 
-import { Heart, House, Plus, Search, UserRound } from 'lucide-react'
+import {
+  House,
+  MagnifyingGlass,
+  Plus,
+  Heart,
+  User,
+} from '@phosphor-icons/react'
 import { ModeToggle } from '../mode-toggle'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -9,18 +15,47 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
   const pathname = usePathname()
 
   const linkStyles =
-    'w-[60px] h-[48px] flex items-center justify-center rounded-[12px] text-[#b8b8b8] dark:text-[#4d4d4d] hover:bg-[#f0f0f0] dark:hover:bg-[#171717] active:scale-90 cursor-pointer transition-all duration-200'
+    'relative group w-[60px] h-[48px] flex items-center justify-center rounded-[12px] cursor-pointer overflow-hidden transition-all duration-200 text-[#b8b8b8] dark:text-[#4d4d4d] custom-hover-bg'
   const buttonStyles =
     'w-[60px] h-[48px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#171717] text-[#939393] dark:text-[#7e7e7e] hover:text-[#000000] dark:hover:text-[#f4f5f7] active:scale-90 cursor-pointer transition-all duration-200'
   const buttonStylesMobile =
     'w-[90px] h-[45px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#1d1e20] text-[#939393] dark:text-[#7e7e7e] hover:text-[#000000] dark:hover:text-[#f4f5f7] active:scale-90 cursor-pointer transition-all duration-200'
 
   const navLinks = [
-    { href: '/', icon: <House />, active: pathname === '/' },
-    { href: '/search', icon: <Search />, active: pathname === '/search' },
-    { href: null, icon: <Plus />, isButton: true },
-    { href: '/activity', icon: <Heart />, active: pathname === '/activity' },
-    { href: '/profile', icon: <UserRound />, active: pathname === '/profile' },
+    {
+      href: '/',
+      icon: <House size={26} weight={pathname === '/' ? 'fill' : 'bold'} />,
+      active: pathname === '/',
+    },
+    {
+      href: '/search',
+      icon: (
+        <MagnifyingGlass
+          size={26}
+          weight={pathname === '/search' ? 'bold' : 'bold'}
+        />
+      ),
+      active: pathname === '/search',
+    },
+    {
+      href: null,
+      icon: <Plus size={26} weight="bold" />,
+      isButton: true,
+    },
+    {
+      href: '/activity',
+      icon: (
+        <Heart size={26} weight={pathname === '/activity' ? 'fill' : 'bold'} />
+      ),
+      active: pathname === '/activity',
+    },
+    {
+      href: '/profile',
+      icon: (
+        <User size={26} weight={pathname === '/profile' ? 'fill' : 'bold'} />
+      ),
+      active: pathname === '/profile',
+    },
   ]
 
   if (isMobile) {
@@ -30,7 +65,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
           if (link.isButton) {
             return (
               <button key={index} className={`${buttonStylesMobile}`}>
-                {link.icon}
+                <span className="relative z-10">{link.icon}</span>
               </button>
             )
           }
@@ -39,9 +74,9 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
             <Link
               key={index}
               href={link.href || '#'}
-              className={`${linkStyles} ${link.active ? 'text-black dark:text-white' : ''}`}
+              className={`${linkStyles} ${link.active ? 'text-black dark:text-[#f4f5f7]' : ''}`}
             >
-              {link.icon}
+              <span className="relative z-10">{link.icon}</span>
             </Link>
           )
         })}
@@ -54,7 +89,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
   }
 
   return (
-    <div className="w-[76px] h-screen bg-transparent flex flex-col items-center px-2 py-3 fixed left-0 top-0 z-50">
+    <div className="w-[76px] h-screen bg-transparent flex flex-col items-center px-0 py-3 fixed left-0 top-0 z-50">
       <div>logo</div>
       <div className="flex flex-col items-center gap-4 flex-1 justify-center">
         {navLinks.map((link, index) => {
@@ -70,7 +105,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
             <Link
               key={index}
               href={link.href || '#'}
-              className={`${linkStyles} ${link.active ? 'text-black dark:text-white' : ''}`}
+              className={`${linkStyles} ${link.active ? 'text-black dark:text-[#f4f5f7]' : ''}`}
             >
               {link.icon}
             </Link>

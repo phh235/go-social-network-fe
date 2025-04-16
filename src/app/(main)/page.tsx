@@ -1,12 +1,18 @@
 'use client'
 
+import { DropdownFilterPost } from '@/components/Item/DropdownFilterPost'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
+import { Plus } from '@phosphor-icons/react'
 
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start p-4">
-      <div className="shadow-md border-1 bg-[#fafafa] dark:bg-[#181818] border-[#d5d5d5] dark:border-[#2d2d2d] max-w-[640px] rounded-[20px]">
+      <div className="flex mb-5">
+        <span className="font-bold me-5">For you</span>
+        <DropdownFilterPost />
+      </div>
+      <div className="shadow-md border-1 bg-[#fff] dark:bg-[#181818] border-[#d5d5d5] dark:border-[#2d2d2d] max-w-[640px] rounded-[20px]">
         <div className="flex items-center border-b-1 border-[#d5d5d5] dark:border-[#2d2d2d] px-6 pt-5 pb-4">
           <Avatar>
             <AvatarImage
@@ -18,7 +24,7 @@ export default function HomePage() {
           <div className="w-full mx-2 text-[#999999] dark:text-[#777777] select-none cursor-text">
             What's new?
           </div>
-          <Button variant="outline" className="dark:bg-[#181818]">
+          <Button variant="outline" className="bg-[#fff] dark:bg-[#181818]">
             Post
           </Button>
         </div>
@@ -171,6 +177,11 @@ export default function HomePage() {
           dolorum itaque id pariatur eligendi magnam minus odio impedit esse
           aliquam! Fugit ea unde beatae! Culpa, distinctio harum!
         </div>
+      </div>
+      <div className="fixed bottom-6 right-6 z-40 hidden md:block">
+        <button className="w-[82px] border-1 border-[#d9d9d9] dark:border-[#383939] h-[68px] shadow-md flex items-center justify-center rounded-[16px] bg-[#fff] dark:bg-[#181818] text-[#000000] dark:text-[#f3f5f7] active:scale-100 cursor-pointer hover:scale-110 transition-all duration-200">
+          <Plus size={26} weight="bold" />
+        </button>
       </div>
     </main>
   )

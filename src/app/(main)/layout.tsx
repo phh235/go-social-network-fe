@@ -3,7 +3,7 @@ import Sidebar from '@/components/layout/sidebar'
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-black">
+    <div className="flex min-h-screen">
       <div className="hidden md:block w-[76px]">
         <Sidebar />
       </div>
