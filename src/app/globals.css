@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@font-face {
+  font-family: 'Google Sans';
+  src: url('./assets/fonts/GoogleSans-Regular.ttf') format('truetype');
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -119,6 +124,40 @@
   }
 }
 
-html, body, #__next {
+html,
+body,
+#__next {
   height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Google Sans' !important;
+}
+
+.custom-hover-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+.dark .custom-hover-bg::before {
+  background-color: #171717;
+}
+.custom-hover-bg > * {
+  position: relative;
+  z-index: 10;
+}
+.custom-hover-bg:hover::before {
+  transform: scale(1.1);
+  opacity: 1;
 }
