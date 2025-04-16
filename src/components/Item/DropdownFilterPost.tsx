@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { CaretDown } from '@phosphor-icons/react'
+import Link from 'next/link'
 
 export function DropdownFilterPost() {
   return (
@@ -17,15 +18,21 @@ export function DropdownFilterPost() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 rounded-2xl">
         <DropdownMenuGroup className="p-0.5">
-          <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3">
-            For you
-          </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3">
-            Following
-          </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3">
-            Liked
-          </DropdownMenuItem>
+          <Link href="/">
+            <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3">
+              For you
+            </DropdownMenuItem>
+          </Link>
+          <Link href="/following">
+            <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3">
+              Following
+            </DropdownMenuItem>
+          </Link>
+          <Link href="/liked">
+            <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3">
+              Liked
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

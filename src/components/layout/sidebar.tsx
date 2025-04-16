@@ -17,9 +17,9 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
   const linkStyles =
     'relative group w-[60px] h-[48px] flex items-center justify-center rounded-[12px] cursor-pointer overflow-hidden transition-all duration-200 text-[#b8b8b8] dark:text-[#4d4d4d] custom-hover-bg'
   const buttonStyles =
-    'w-[60px] h-[48px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#171717] text-[#939393] dark:text-[#7e7e7e] hover:text-[#000000] dark:hover:text-[#f4f5f7] active:scale-90 cursor-pointer transition-all duration-200'
+    'w-[60px] h-[48px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#171717] text-[#939393] dark:text-[#7e7e7e] hover:text-foreground dark:hover:text-[#f4f5f7] active:scale-90 cursor-pointer transition-all duration-200'
   const buttonStylesMobile =
-    'w-[90px] h-[45px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#1d1e20] text-[#939393] dark:text-[#7e7e7e] hover:text-[#000000] dark:hover:text-[#f4f5f7] active:scale-90 cursor-pointer transition-all duration-200'
+    'w-[90px] h-[45px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#1d1e20] text-[#939393] dark:text-[#7e7e7e] hover:text-foreground dark:hover:text-[#f4f5f7] active:scale-90 cursor-pointer transition-all duration-200'
 
   const navLinks = [
     {
@@ -60,7 +60,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
 
   if (isMobile) {
     return (
-      <div className="w-full h-[76px] bg-[#fafafa] dark:bg-[#111214] border-t flex flex-row items-center justify-between px-2 py-0 fixed bottom-0 left-0 z-50">
+      <div className="w-full h-[62px] smTablet:h-[76px] bg-background dark:bg-[#111214] border-t flex flex-row items-center justify-between px-2 py-0 fixed bottom-0 left-0 z-50">
         {navLinks.map((link, index) => {
           if (link.isButton) {
             return (
