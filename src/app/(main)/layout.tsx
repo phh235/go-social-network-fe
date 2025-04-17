@@ -1,7 +1,6 @@
-'use client'
-
 import { ReactNode } from 'react'
 import Sidebar from '@/components/layout/sidebar'
+import Header from '@/components/layout/header'
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
@@ -9,8 +8,11 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <div className="hidden md:block w-[76px]">
         <Sidebar />
       </div>
-      <main className="flex-1 md:pr-[76px] flex justify-center">
-        <div className="w-full max-w-[640px]">{children}</div>
+      <main className="flex-1 md:pr-[76px] flex flex-col">
+        <Header />
+        <div className="flex justify-center">
+          <div className="w-full max-w-[640px]">{children}</div>
+        </div>
       </main>
       <div className="md:hidden">
         <Sidebar isMobile={true} />

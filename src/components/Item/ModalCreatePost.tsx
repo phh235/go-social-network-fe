@@ -54,7 +54,6 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
         <DialogHeader className="border-b-1 border-[#d5d5d5] dark:border-[#2d2d2d] p-4 py-4">
           <DialogTitle className="text-center">New threads</DialogTitle>
         </DialogHeader>
-
         <div className="flex px-4">
           <Avatar className="w-9 h-9">
             <AvatarImage
@@ -63,7 +62,6 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
             />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-
           <div className="flex flex-col text-[15px] ml-2.5 w-full">
             <span className="font-bold">_andrewhhh</span>
             <textarea
@@ -75,7 +73,6 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
             />
           </div>
         </div>
-
         {images.length > 0 && (
           <div className="ml-16 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing">
             <div className="flex gap-2 w-fit pr-4">
@@ -101,7 +98,6 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
             </div>
           </div>
         )}
-
         <div className="ml-16 -mt-2">
           <label className="cursor-pointer text-[#999999] dark:text-[#777777] flex items-center">
             <div className="flex items-center transition-all active:scale-90">
@@ -121,7 +117,6 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
             />
           </label>
         </div>
-
         <DialogFooter className="border-t-1 border-[#d5d5d5] dark:border-[#2d2d2d] p-4 py-4">
           <Button
             variant={'outline'}

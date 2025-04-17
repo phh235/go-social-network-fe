@@ -3,6 +3,7 @@
 import { DropdownFilterPost } from '@/components/Item/DropdownFilterPost'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ModeToggle } from '../mode-toggle'
 
 function MobileTab({ href, label }: { href: string; label: string }) {
   const pathname = usePathname()
@@ -11,8 +12,10 @@ function MobileTab({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className={`px-4 py-3 font-bold border-b-2 w-full text-center ${
-        isActive ? 'text-black border-black' : 'text-[#999999] border-[#d1d5dc]'
+      className={`px-4 py-3 font-bold border-b-[1px] w-full text-center ${
+        isActive
+          ? 'text-black dark:text-white border-black dark:border-white'
+          : 'text-[#999999] dark:text-[#777777] border-[#d1d5dc] dark:border-[#323333]'
       }`}
     >
       {label}
@@ -23,11 +26,8 @@ function MobileTab({ href, label }: { href: string; label: string }) {
 export function Tabs() {
   return (
     <>
-      {/* Logo on mobile */}
-      <p className="text-center m-3 block md:hidden">Logo</p>
-
       {/* Wrapper */}
-      <div className="flex justify-center">
+      <div className="flex justify-center sticky top-0 bg-background">
         {/* Desktop */}
         <div className="hidden md:block mb-3 mt-4">
           <div className="flex">
@@ -37,7 +37,7 @@ export function Tabs() {
         </div>
 
         {/* Mobile */}
-        <div className="md:hidden relative w-full mb-5">
+        <div className="md:hidden relative w-full">
           <div className="absolute bottom-0 left-0 w-full h-px bg-gray-300" />
           <div className="flex relative z-10 justify-center">
             <MobileTab href="/" label="For you" />

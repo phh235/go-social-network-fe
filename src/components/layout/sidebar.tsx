@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { ModalCreatePost } from '../Item/ModalCreatePost'
+import { DropdownMenuList } from '../Item/DropdownMenuList'
 
 const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
   const pathname = usePathname()
@@ -101,7 +102,11 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
         {navLinks.map((link, index) => {
           if (link.isButton) {
             return (
-              <button key={index} className={`${buttonStyles} h-[48px]`} onClick={() => setOpen(true)}>
+              <button
+                key={index}
+                className={`${buttonStyles} h-[48px]`}
+                onClick={() => setOpen(true)}
+              >
                 {link.icon}
               </button>
             )
@@ -118,8 +123,11 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
           )
         })}
       </div>
-      <div className="pb-2">
+      <div className="flex flex-col items-center pb-3">
         <ModeToggle />
+        <div className="pt-3">
+          <DropdownMenuList />
+        </div>
       </div>
       <ModalCreatePost open={open} onOpenChange={setOpen} />
     </div>
