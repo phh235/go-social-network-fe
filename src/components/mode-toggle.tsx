@@ -4,16 +4,17 @@ import * as React from 'react'
 import { Devices, Moon, Sun } from '@phosphor-icons/react'
 import { useTheme } from 'next-themes'
 
-import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import useIsMobile from '@/helper'
 
 export function ModeToggle() {
   const { setTheme } = useTheme()
+  const isMobile = useIsMobile()
 
   return (
     <DropdownMenu>
@@ -31,7 +32,11 @@ export function ModeToggle() {
           />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" side="right" className="p-1 rounded-2xl">
+      <DropdownMenuContent
+        align="end"
+        side={isMobile ? 'bottom' : 'right'}
+        className="p-1 rounded-2xl"
+      >
         <DropdownMenuItem
           onClick={() => setTheme('light')}
           className="cursor-pointer py-2.5 rounded-[12px] text-[15px]"

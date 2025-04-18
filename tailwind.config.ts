@@ -11,11 +11,6 @@ const config: Config = {
     extend: {
       colors: {},
     },
-    screens: {
-      smMobile: '300px', // Small Mobile (Landscape)
-      smTablet: '601px', // Small Tablets (Portrait)
-      smDesktop: '1025px', // Small Desktops & Laptops
-    },
   },
   plugins: [],
 }

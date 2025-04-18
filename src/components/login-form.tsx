@@ -18,7 +18,6 @@ export function LoginForm({
       <div className="grid gap-3">
         <div className="grid">
           <Input
-            id="email"
             type="email"
             required
             placeholder="Email"
@@ -27,7 +26,6 @@ export function LoginForm({
         </div>
         <div className="grid">
           <Input
-            id="password"
             type="password"
             required
             placeholder="Password"

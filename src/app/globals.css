@@ -49,11 +49,11 @@
 :root {
   --radius: 0.75rem;
   --background: #fafafa;
-  --foreground: oklch(0.141 0.005 285.823);
+  --foreground: #000;
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
+  --card-foreground: #000;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
+  --popover-foreground: #000;
   --primary: oklch(0.21 0.006 285.885);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
@@ -72,7 +72,7 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-foreground: #000;
   --sidebar-primary: oklch(0.21 0.006 285.885);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.967 0.001 286.375);
@@ -136,7 +136,6 @@ body,
   box-sizing: border-box;
   font-family: 'Google Sans' !important;
 }
-
 .custom-hover-bg::before {
   content: '';
   position: absolute;
@@ -152,6 +151,14 @@ body,
 }
 .dark .custom-hover-bg::before {
   background-color: #171717;
+}
+@media screen and (max-width: 768px) {
+  .custom-hover-bg::before {
+    background-color: var(--background);
+  }
+  .dark .custom-hover-bg::before {
+    background-color: transparent;
+  }
 }
 .custom-hover-bg > * {
   position: relative;
