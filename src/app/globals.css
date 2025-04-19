@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import 'react-photo-view/dist/react-photo-view.css';
 
 @font-face {
   font-family: 'Google Sans';
@@ -130,6 +131,10 @@ body,
   height: 100%;
 }
 
+body {
+  overflow-y: scroll !important;
+}
+
 *,
 *::before,
 *::after {
@@ -149,6 +154,12 @@ body,
     opacity 0.2s ease-in-out;
   z-index: 1;
 }
+.custom-hover-bg.rounded-full::before {
+  border-radius: 9999px !important;
+}
+.custom-hover-bg.transition-all::before {
+  transition: all 0.1s ease-in-out !important;
+}
 .dark .custom-hover-bg::before {
   background-color: #171717;
 }
@@ -167,4 +178,13 @@ body,
 .custom-hover-bg:hover::before {
   transform: scale(1.1);
   opacity: 1;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

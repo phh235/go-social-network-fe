@@ -21,7 +21,10 @@ export function CreatePostInput() {
           <div className="w-full mx-2 text-[#999999] dark:text-[#777777] select-none cursor-text">
             What's new?
           </div>
-          <Button variant="outline" className="bg-[#fff] dark:bg-[#181818]">
+          <Button
+            variant="outline"
+            className="bg-white dark:bg-[#181818] font-bold"
+          >
             Post
           </Button>
         </div>

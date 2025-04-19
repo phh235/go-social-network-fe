@@ -27,7 +27,7 @@ export function Tabs() {
   return (
     <>
       {/* Wrapper */}
-      <div className="flex justify-center sticky top-0 bg-background">
+      <div className="flex justify-center bg-background">
         {/* Desktop */}
         <div className="hidden md:block mb-3 mt-4">
           <div className="flex">

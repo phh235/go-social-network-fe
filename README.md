@@ -16,6 +16,8 @@ pnpm dev
 
 - [React](https://react.dev)
 - [Next.js](https://nextjs.org)
+- [Radix UI](https://www.radix-ui.com)
 - [Tailwind CSS](https://tailwindcss.com)
 - [shadcn/ui](https://ui.shadcn.com)
+- [Motion](https://motion.dev)
 - [Lucide](https://lucide.dev)
