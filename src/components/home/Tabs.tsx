@@ -3,7 +3,6 @@
 import { DropdownFilterPost } from '@/components/Item/DropdownFilterPost'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ModeToggle } from '../mode-toggle'
 
 function MobileTab({ href, label }: { href: string; label: string }) {
   const pathname = usePathname()
@@ -27,7 +26,7 @@ export function Tabs() {
   return (
     <>
       {/* Wrapper */}
-      <div className="flex justify-center sticky top-0 bg-background">
+      <div className="flex justify-center bg-background">
         {/* Desktop */}
         <div className="hidden md:block mb-3 mt-4">
           <div className="flex">
