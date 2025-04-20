@@ -18,9 +18,9 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
   const [open, setOpen] = useState(false)
 
   const linkStyles =
-    'relative group w-[60px] h-[48px] flex items-center justify-center rounded-[12px] cursor-pointer overflow-hidden transition-all duration-200 text-[#b8b8b8] dark:text-[#4d4d4d] custom-hover-bg'
+    'relative group w-[60px] h-[48px] flex items-center justify-center rounded-[12px] cursor-pointer overflow-hidden transition-all duration-200 text-[#b8b8b8] dark:text-[#4d4d4d] custom-hover-bg active:scale-90'
   const buttonStyles =
-    'w-[70px] md:w-[60px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#171717] text-[#939393] dark:text-[#7e7e7e] hover:text-foreground dark:hover:text-[#f4f5f7] active:scale-95 cursor-pointer transition-all duration-200'
+    'w-[70px] md:w-[60px] flex items-center justify-center rounded-[12px] bg-[#f0f0f0] dark:bg-[#171717] text-[#939393] dark:text-[#7e7e7e] hover:text-foreground dark:hover:text-[#f4f5f7] cursor-pointer transition-all duration-200'
 
   const navLinks = [
     {

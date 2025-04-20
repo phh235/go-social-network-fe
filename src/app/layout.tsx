@@ -1,5 +1,6 @@
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/sonner'
 import { ReactNode } from 'react'
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
