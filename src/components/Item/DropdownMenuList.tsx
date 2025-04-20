@@ -8,7 +8,7 @@ import {
   DropdownMenuGroup,
 } from '@/components/ui/dropdown-menu'
 import useIsMobile from '@/helper'
-import { AlignLeft, AlignRight } from 'lucide-react'
+import { MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { ThemeSwitcher } from '../theme-switcher'
@@ -21,25 +21,14 @@ export function DropdownMenuList() {
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <button className="outline-none">
-          {isMobile ? (
-            <AlignRight
-              size={24}
-              className={`transition-all duration-200 ease-in-out cursor-pointer ${
-                open
-                  ? 'text-black dark:text-white'
-                  : 'text-[#b8b8b8] hover:text-black dark:hover:text-white dark:text-[#4d4d4d]'
-              }`}
-            />
-          ) : (
-            <AlignLeft
-              size={24}
-              className={`transition-all duration-200 ease-in-out cursor-pointer ${
-                open
-                  ? 'text-black dark:text-white'
-                  : 'text-[#b8b8b8] hover:text-black dark:hover:text-white dark:text-[#4d4d4d]'
-              }`}
-            />
-          )}
+          <MenuIcon
+            size={24}
+            className={`transition-all duration-200 ease-in-out cursor-pointer ${
+              open
+                ? 'text-black dark:text-white'
+                : 'text-[#b8b8b8] hover:text-black dark:hover:text-white dark:text-[#4d4d4d]'
+            }`}
+          />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

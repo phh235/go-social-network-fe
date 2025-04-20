@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/dialog'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Images, X } from 'lucide-react'
+import { toastInfo } from '@/utils'
 
 interface ModalCreatePostProps {
   open: boolean
@@ -47,6 +48,10 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
     setImages((prev) => prev.filter((_, i) => i !== index))
   }
 
+  const handleCreatePost = () => {
+    toastInfo('Upcoming feature!')
+  }
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="min-w-full h-full md:h-fit md:min-w-[620px] p-0 rounded-none md:rounded-2xl bg-background dark:bg-[#1a1a1a] [&>button:last-child]:hidden">
@@ -62,7 +67,7 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
         <div className="flex px-6">
           <Avatar className="w-9 h-9">
             <AvatarImage
-              src="https://github.com/shadcn.png"
+              src="https://avatars.githubusercontent.com/u/121915529?v=4"
               alt="User Avatar"
             />
             <AvatarFallback>CN</AvatarFallback>
@@ -129,6 +134,7 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
           <Button
             variant={'outline'}
             className="w-fit bg-white dark:bg-[#1a1a1a] font-bold"
+            onClick={handleCreatePost}
           >
             Post
           </Button>

@@ -80,6 +80,8 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --background-toast: #fff !important;
+  --text: #000;
 }
 
 .dark {
@@ -114,6 +116,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+  --background-toast: #333;
+  --text: #fff;
 }
 
 @layer base {
@@ -129,10 +133,6 @@ html,
 body,
 #__next {
   height: 100%;
-}
-
-body {
-  overflow-y: scroll !important;
 }
 
 *,
@@ -156,6 +156,11 @@ body {
 }
 .custom-hover-bg.rounded-full::before {
   border-radius: 9999px !important;
+  background-color: #f0f0f0 !important;
+}
+.dark .custom-hover-bg.rounded-full::before {
+  border-radius: 9999px !important;
+  background-color: #1e1e1e !important;
 }
 .custom-hover-bg.transition-all::before {
   transition: all 0.1s ease-in-out !important;
@@ -165,7 +170,7 @@ body {
 }
 @media screen and (max-width: 768px) {
   .custom-hover-bg::before {
-    background-color: var(--background);
+    background-color: transparent;
   }
   .dark .custom-hover-bg::before {
     background-color: transparent;

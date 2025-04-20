@@ -11,7 +11,10 @@ export function CreatePostInput() {
     <div className="border-b-1 border-[#d5d5d5] dark:border-[#2d2d2d] px-6 pt-5 pb-4 hidden md:block">
       <div className="flex items-center">
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
+          <AvatarImage
+            src="https://avatars.githubusercontent.com/u/121915529?v=4"
+            alt="User Avatar"
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div

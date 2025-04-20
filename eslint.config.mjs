@@ -19,7 +19,7 @@ const eslintConfig = [
       '@typescript-eslint/no-empty-object-types': 'off',
       '@typescript-eslint/no-empty-interface': 'off',
     },
-  }
+  },
 ]
 
 export default eslintConfig
