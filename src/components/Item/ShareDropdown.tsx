@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { toastSuccess } from '@/utils'
+import { formatNumber, toastSuccess } from '@/utils'
 import { LinkIcon, Send } from 'lucide-react'
 import useIsMobile from '@/helper'
 
@@ -26,7 +26,7 @@ export function ShareDropdown({ count, postId }: ShareDropdownProps) {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-1 text-[#424242] outline-none dark:text-[#cccccc] relative custom-hover-bg rounded-full px-2 py-2 transition-all cursor-pointer leading-none">
           <Send size={16} />
-          {count !== undefined && <span>{count}</span>}
+          {count !== undefined && <span>{formatNumber(count)}</span>}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

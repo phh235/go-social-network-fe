@@ -14,7 +14,7 @@ export default function HomePage() {
         <ContentCard>
           <CreatePostInput />
           {postsData.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <PostCard key={post.id} post={post} user={post.user} />
           ))}
         </ContentCard>
         <FloatingActionButton />

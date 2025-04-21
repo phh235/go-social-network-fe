@@ -29,7 +29,7 @@ export function toastWarning(message: string, options?: ToastOptions) {
 }
 
 export function toastInfo(message: string, options?: ToastOptions) {
-  toast(message, {
+  toast.info(message, {
     description: options?.description,
     duration: options?.duration ?? 3000,
   })

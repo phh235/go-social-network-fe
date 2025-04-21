@@ -29,10 +29,11 @@ export function DropdownPostList({ trigger }: DropdownPostListProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-58 rounded-2xl">
         <DropdownMenuGroup>
-          <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3 flex justify-between">
-            <button>
-              <span>Copy link</span>
-            </button>
+          <DropdownMenuItem
+            className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3 flex justify-between"
+            onClick={handleCopyLink}
+          >
+            <span>Copy link</span>
             <Link size={21} className="text-black dark:text-white" />
           </DropdownMenuItem>
           <DropdownMenuItem
