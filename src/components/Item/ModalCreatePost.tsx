@@ -56,7 +56,7 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="min-w-full h-full md:h-fit md:min-w-[620px] p-0 rounded-none md:rounded-2xl bg-background dark:bg-[#1a1a1a] [&>button:last-child]:hidden">
         <button
-          className="absolute top-3 left-6 text-black dark:text-white active:scale-95 cursor-pointer transition-all duration-200"
+          className="absolute top-3 left-6 text-black dark:text-white active:scale-90 cursor-pointer transition-all duration-200"
           onClick={() => onOpenChange(false)}
         >
           <span>Cancel</span>
@@ -98,7 +98,7 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
                   />
                   <button
                     onClick={() => handleRemoveImage(idx)}
-                    className="absolute top-1 right-1 p-1 bg-[#8c8b88] dark:bg-[#707874] rounded-full text-white active:scale-95 cursor-pointer"
+                    className="absolute top-1 right-1 p-1 bg-[#8c8b88] dark:bg-[#707874] rounded-full text-white active:scale-90 cursor-pointer"
                     aria-label="Remove image"
                   >
                     <X size={14} />
@@ -109,8 +109,8 @@ export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
           </div>
         )}
         <div className="ml-18 -mt-2">
-          <label className="cursor-pointer text-[#999999] dark:text-[#777777] flex items-center">
-            <div className="flex items-center transition-all active:scale-95">
+          <label className="cursor-pointer text-[#999999] dark:text-[#777777] flex items-center w-fit">
+            <div className="flex items-center transition-all active:scale-90">
               <Images size={18} className="me-1" />
               {images.length > 0 ? (
                 <span className="text-[15px]">Add</span>

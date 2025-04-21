@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import useIsMobile from '@/helper'
-import { toastSuccess } from '@/utils'
+import { formatNumber, toastSuccess } from '@/utils'
 import { Repeat } from 'lucide-react'
 
 interface RepostDropdownProps {
@@ -26,7 +26,7 @@ export function RepostDropdown({ count, postId }: RepostDropdownProps) {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-1 text-[#424242] dark:text-[#cccccc] outline-none relative custom-hover-bg rounded-full px-2 py-2 transition-all cursor-pointer leading-none">
           <Repeat size={16} />
-          {count !== undefined && <span>{count}</span>}
+          {count !== undefined && <span>{formatNumber(count)}</span>}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

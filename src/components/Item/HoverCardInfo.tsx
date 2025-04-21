@@ -6,10 +6,10 @@ import {
 import Image from 'next/image'
 import verifiedIcon from '@/app/assets/svg/verified.svg'
 import { UserProfileContent } from './UserProfileContent'
-import { Post } from '@/models/Post'
+import { User } from '@/models/User'
 
 interface HoverCardInfoProps {
-  user: Post
+  user: User
 }
 
 export function HoverCardInfo({ user }: HoverCardInfoProps) {

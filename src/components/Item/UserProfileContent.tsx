@@ -1,10 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '../ui/button'
-import { formatNumber } from '@/utils'
-import { Post } from '@/models/Post'
+import { formatNumber, toastInfo } from '@/utils'
+import { User } from '@/models/User'
+import Image from 'next/image'
+import verifiedIcon from '@/app/assets/svg/verified.svg'
+import FollowButton from '../Button/FollowButton'
 
 interface UserProfileContentProps {
-  user: Post
+  user: User
   className?: string
 }
 
@@ -12,11 +15,25 @@ export function UserProfileContent({
   user,
   className = '',
 }: UserProfileContentProps) {
+  const handleFollow = () => {
+    toastInfo('Upcoming feature!')
+  }
   return (
     <div className={className}>
       <div className="flex justify-between space-x-4">
         <div className="space-y-1">
-          <h2 className="text-xl font-bold">{user.fullName}</h2>
+          <h2 className="text-xl font-bold flex">
+            {user.fullName}{' '}
+            {user.isVerified && (
+              <Image
+                src={verifiedIcon}
+                alt="Verified"
+                width={20}
+                height={20}
+                className="ml-1 select-none"
+              />
+            )}
+          </h2>
           <span className="text-[15px]">{user.username}</span>
           <p className="text-muted-foreground text-[15px]">
             {user.occupation} at{' '}
@@ -37,7 +54,7 @@ export function UserProfileContent({
           </AvatarFallback>
         </Avatar>
       </div>
-      <Button className="w-full mt-4">Follow</Button>
+      <FollowButton marginTop={4} className="w-full" onClick={handleFollow} />
     </div>
   )
 }

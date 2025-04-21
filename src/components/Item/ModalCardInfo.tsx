@@ -6,10 +6,10 @@ import {
 } from '@/components/ui/dialog'
 import { ReactNode } from 'react'
 import { UserProfileContent } from './UserProfileContent'
-import { Post } from '@/models/Post'
+import { User } from '@/models/User'
 
 interface ModalCardInfoProps {
-  user: Post
+  user: User
   trigger: ReactNode
 }
 

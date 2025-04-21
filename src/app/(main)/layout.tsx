@@ -8,11 +8,9 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <div className="hidden md:block w-[76px]">
         <Sidebar />
       </div>
-      <main className="flex-1 md:pr-[76px] flex flex-col">
+      <main className="flex-1 md:pr-[76px] flex flex-col pb-[64px]">
         <Header />
-        <div className="flex justify-center">
-          <div className="w-full max-w-[640px]">{children}</div>
-        </div>
+        <div className="flex flex-col justify-center mt-0 md:mt-1">{children}</div>
       </main>
       <div className="md:hidden">
         <Sidebar isMobile={true} />

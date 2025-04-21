@@ -12,17 +12,21 @@ import { ShareDropdown } from './ShareDropdown'
 import { toastInfo } from '@/utils'
 import { ModalCardInfo } from './ModalCardInfo'
 import { Post } from '@/models/Post'
+import { User } from '@/models/User'
 import { DropdownPostList } from './DropdownPostList'
 
 interface PostCardProps {
   post: Post
+  user: User
 }
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({ post, user }: PostCardProps) {
   const scrollRef = useHorizontalScroll<HTMLDivElement>()
   const [isDragging, setIsDragging] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [likesCount, setLikesCount] = useState<number>(post.likes || 0)
+  const [startX, setStartX] = useState(0)
+  const [moved, setMoved] = useState(false)
 
   const handleLike = () => {
     if (isLiked) {
@@ -47,16 +51,32 @@ export function PostCard({ post }: PostCardProps) {
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    setStartX(e.clientX)
     setIsDragging(true)
+    setMoved(false)
   }
 
-  const handleClick = (e: React.MouseEvent, index: number) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (isDragging) {
+      const deltaX = Math.abs(e.clientX - startX)
+      if (deltaX > 5) {
+        setMoved(true)
+      }
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (moved) {
       e.preventDefault()
       e.stopPropagation()
-      setIsDragging(false)
+      setMoved(false)
       return false
     }
+    return true
   }
 
   return (
@@ -66,15 +86,15 @@ export function PostCard({ post }: PostCardProps) {
           <div className="relative w-12 h-12">
             <Avatar className="w-9 h-9 border-[1px] border-[#d9d9d9] dark:border-[#383939]">
               <AvatarImage
-                src={post.avatarUrl}
-                alt={`${post.username}'s Avatar`}
+                src={user.avatarUrl}
+                alt={`${user.username}'s Avatar`}
               />
               <AvatarFallback>
-                {post.username.substring(0, 2).toUpperCase()}
+                {user.username.substring(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <ModalCardInfo
-              user={post}
+              user={user}
               trigger={
                 <button className="absolute bottom-2.5 right-2 bg-black dark:bg-white text-white dark:text-white w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-[#181818] cursor-pointer transition-all duration-200 hover:scale-110 active:scale-100">
                   <Plus className="w-3 h-3 text-white dark:text-black" />
@@ -82,10 +102,10 @@ export function PostCard({ post }: PostCardProps) {
               }
             />
           </div>
-          <div className="flex flex-col text-[15px] ml-2 flex-1 min-w-0 space-y-1">
-            <div className="flex items-center justify-between">
+          <div className="flex flex-col text-[15px] ml-1 flex-1 min-w-0">
+            <div className="flex items-start justify-between -mb-3.5 -mt-1">
               <div>
-                <HoverCardInfo user={post} />
+                <HoverCardInfo user={user} />
                 <span className="font-medium text-[#999999] dark:text-[#777777] ms-2">
                   {post.timePosted}
                 </span>
@@ -100,36 +120,66 @@ export function PostCard({ post }: PostCardProps) {
             {/* Images display with PhotoView gallery */}
             {images.length > 0 && (
               <div
-                ref={scrollRef}
-                className="mt-2 w-full overflow-x-auto max-w-full overflow-y-hidden scrollbar-hide"
-                onMouseDown={(e) => e.stopPropagation()}
-                onMouseUp={() => setIsDragging(false)}
-                onMouseLeave={() => setIsDragging(false)}
-                style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+                ref={images.length !== 2 ? scrollRef : undefined}
+                className={`mt-2 ${images.length !== 2 ? '-ml-3 md:-ml-6 w-[calc(100%+12px)] md:w-[calc(100%+24px)]' : 'w-full'} ${images.length !== 2 ? 'overflow-x-auto' : ''} max-w-none overflow-y-hidden scrollbar-hide`}
+                onMouseMove={images.length !== 2 ? handleMouseMove : undefined}
+                onMouseUp={images.length !== 2 ? handleMouseUp : undefined}
+                onMouseLeave={images.length !== 2 ? handleMouseUp : undefined}
+                style={{
+                  cursor:
+                    isDragging && images.length !== 2
+                      ? 'grabbing'
+                      : images.length !== 2
+                        ? 'grab'
+                        : 'default',
+                }}
               >
-                <div className="flex gap-2 w-[300px] md:w-full">
+                <div
+                  className={`flex gap-2 ${images.length === 2 ? 'w-full justify-between' : images.length === 1 ? 'w-full' : 'w-[300px] md:w-full'} ${images.length !== 2 ? 'pl-3 md:pl-6' : ''}`}
+                >
                   <PhotoProvider speed={() => 500}>
                     {images.map((image, index) => (
                       <div
                         key={`${post.id}-image-${index}`}
-                        className={`relative flex-shrink-0 min-w-[200px] ${images.length === 1 ? 'w-full' : 'w-[250px] md:w-[300px]'} max-h-[340px] overflow-hidden rounded-[8px] transition-all duration-200 active:scale-95`}
-                        onMouseDown={handleMouseDown}
+                        className={`relative flex-shrink-0 ${
+                          images.length === 1
+                            ? 'w-full md:max-w-full'
+                            : images.length === 2
+                              ? 'w-[calc(50%-4px)] md:w-[calc(50%-4px)]'
+                              : 'min-w-[200px] w-[250px] md:w-[300px]'
+                        } ${images.length === 1 ? 'max-h-[500px]' : 'h-[320px]'} overflow-hidden rounded-[8px] transition-all duration-200 active:scale-95`}
+                        onMouseDown={
+                          images.length !== 2 ? handleMouseDown : undefined
+                        }
                       >
                         <div
-                          className="cursor-grab w-full h-full"
-                          onClick={(e) => handleClick(e, index)}
+                          className={`${images.length >= 3 ? 'cursor-grab' : 'cursor-pointer'} w-full h-full`}
+                          onClick={(e) =>
+                            images.length !== 2 ? handleClick(e) : null
+                          }
                         >
-                          <PhotoView
-                            key={`${post.id}-photoview-${index}`}
-                            src={image}
-                          >
+                          {!moved || images.length === 2 ? (
+                            <PhotoView
+                              key={`${post.id}-photoview-${index}`}
+                              src={image}
+                            >
+                              <img
+                                src={image}
+                                alt={`Post image ${index + 1}`}
+                                className={`w-full ${images.length === 1 ? 'h-auto' : 'h-full'} ${images.length === 1 ? 'object-contain' : 'object-cover'}`}
+                                draggable={false}
+                                loading="lazy"
+                              />
+                            </PhotoView>
+                          ) : (
                             <img
                               src={image}
                               alt={`Post image ${index + 1}`}
-                              className="w-full h-full object-cover"
+                              className={`w-full ${images.length === 1 ? 'h-auto' : 'h-full'} ${images.length === 1 ? 'object-contain' : 'object-cover'}`}
                               draggable={false}
+                              loading="lazy"
                             />
-                          </PhotoView>
+                          )}
                         </div>
                       </div>
                     ))}
