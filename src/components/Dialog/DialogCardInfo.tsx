@@ -5,15 +5,15 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { ReactNode } from 'react'
-import { UserProfileContent } from './UserProfileContent'
+import { UserProfileContent } from '../Item/UserProfileContent'
 import { User } from '@/models/User'
 
-interface ModalCardInfoProps {
+interface DialogCardInfoProps {
   user: User
   trigger: ReactNode
 }
 
-export function ModalCardInfo({ user, trigger }: ModalCardInfoProps) {
+export function DialogCardInfo({ user, trigger }: DialogCardInfoProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>

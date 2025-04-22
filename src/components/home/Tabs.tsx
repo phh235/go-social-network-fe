@@ -1,6 +1,6 @@
 'use client'
 
-import { DropdownFilterPost } from '@/components/Item/DropdownFilterPost'
+import { DropdownFilterPost } from '@/components/Dropdown/DropdownFilterPost'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 

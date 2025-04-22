@@ -2,25 +2,25 @@
 
 import { Heart, MessageCircle, Plus } from 'lucide-react'
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar'
-import { HoverCardInfo } from './HoverCardInfo'
-import PostActionButton from './PostActionButton'
 import { useHorizontalScroll } from '@/hooks/useHorizontalScroll'
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 import { useState } from 'react'
-import { RepostDropdown } from './RepostDropdown'
-import { ShareDropdown } from './ShareDropdown'
+import { DropdownRepost } from '@/components/Dropdown/DropdownRepost'
+import { DropdownShare } from '@/components/Dropdown/DropdownShare'
 import { toastInfo } from '@/utils'
-import { ModalCardInfo } from './ModalCardInfo'
+import { DialogCardInfo } from '@/components/Dialog/DialogCardInfo'
 import { Post } from '@/models/Post'
 import { User } from '@/models/User'
-import { DropdownPostList } from './DropdownPostList'
+import { DropdownPostList } from '@/components/Dropdown/DropdownPostList'
+import { CardHoverInfo } from './CardHoverInfo'
+import ButtonPostAction from '@/components/Button/ButtonPostAction'
 
-interface PostCardProps {
+interface CardPostProps {
   post: Post
   user: User
 }
 
-export function PostCard({ post, user }: PostCardProps) {
+export function CardPost({ post, user }: CardPostProps) {
   const scrollRef = useHorizontalScroll<HTMLDivElement>()
   const [isDragging, setIsDragging] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
@@ -93,7 +93,7 @@ export function PostCard({ post, user }: PostCardProps) {
                 {user.username.substring(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
-            <ModalCardInfo
+            <DialogCardInfo
               user={user}
               trigger={
                 <button className="absolute bottom-2.5 right-2 bg-black dark:bg-white text-white dark:text-white w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-[#181818] cursor-pointer transition-all duration-200 hover:scale-110 active:scale-100">
@@ -103,16 +103,14 @@ export function PostCard({ post, user }: PostCardProps) {
             />
           </div>
           <div className="flex flex-col text-[15px] ml-1 flex-1 min-w-0">
-            <div className="flex items-start justify-between -mb-3.5 -mt-1">
+            <div className="flex items-center justify-between -mb-1 -mt-2.5">
               <div>
-                <HoverCardInfo user={user} />
+                <CardHoverInfo user={user} />
                 <span className="font-medium text-[#999999] dark:text-[#777777] ms-2">
                   {post.timePosted}
                 </span>
               </div>
-              <div>
-                <DropdownPostList />
-              </div>
+              <DropdownPostList />
             </div>
             <span className="border-0 shadow-none outline-0 w-full resize-none bg-transparent overflow-hidden">
               {post.content}
@@ -188,20 +186,20 @@ export function PostCard({ post, user }: PostCardProps) {
               </div>
             )}
             <div className="flex items-center gap-0.5 mt-2 -ml-2">
-              <PostActionButton
+              <ButtonPostAction
                 icon={<Heart size={16} fill={isLiked ? '#ff0034' : 'none'} />}
                 count={likesCount}
                 onClick={handleLike}
                 isActive={isLiked}
                 activeColor="#ff0034"
               />
-              <PostActionButton
+              <ButtonPostAction
                 icon={<MessageCircle size={16} />}
                 count={post.comments}
                 onClick={handleComment}
               />
-              <RepostDropdown count={post.reposts} postId={post.id} />
-              <ShareDropdown count={post.shares} postId={post.id} />
+              <DropdownRepost count={post.reposts} postId={post.id} />
+              <DropdownShare count={post.shares} postId={post.id} />
             </div>
           </div>
         </div>

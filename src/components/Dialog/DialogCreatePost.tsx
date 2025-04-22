@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef, useState, ChangeEvent } from 'react'
 import { Button } from '@/components/ui/button'
 import {
@@ -11,12 +13,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Images, X } from 'lucide-react'
 import { toastInfo } from '@/utils'
 
-interface ModalCreatePostProps {
+interface DialogCreatePostProps {
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
-export function ModalCreatePost({ open, onOpenChange }: ModalCreatePostProps) {
+export function DialogCreatePost({
+  open,
+  onOpenChange,
+}: DialogCreatePostProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [images, setImages] = useState<string[]>([])
 

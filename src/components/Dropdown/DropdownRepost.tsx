@@ -10,12 +10,12 @@ import useIsMobile from '@/helper'
 import { formatNumber, toastSuccess } from '@/utils'
 import { Repeat } from 'lucide-react'
 
-interface RepostDropdownProps {
+interface DropdownRepostProps {
   count?: number
   postId: string | number
 }
 
-export function RepostDropdown({ count, postId }: RepostDropdownProps) {
+export function DropdownRepost({ count, postId }: DropdownRepostProps) {
   const isMobile = useIsMobile()
   const handleRepost = () => {
     toastSuccess('Post reposted')

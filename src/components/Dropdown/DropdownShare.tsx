@@ -10,12 +10,12 @@ import { formatNumber, toastSuccess } from '@/utils'
 import { LinkIcon, Send } from 'lucide-react'
 import useIsMobile from '@/helper'
 
-interface ShareDropdownProps {
+interface DropdownShareProps {
   count?: number
   postId: string | number
 }
 
-export function ShareDropdown({ count, postId }: ShareDropdownProps) {
+export function DropdownShare({ count, postId }: DropdownShareProps) {
   const isMobile = useIsMobile()
   const handleCopyLink = () => {
     toastSuccess('Link copied to clipboard')

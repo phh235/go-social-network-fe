@@ -1,10 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '../ui/button'
-import { formatNumber, toastInfo } from '@/utils'
+import { formatNumber, renderBio } from '@/utils'
 import { User } from '@/models/User'
 import Image from 'next/image'
 import verifiedIcon from '@/app/assets/svg/verified.svg'
-import FollowButton from '../Button/FollowButton'
+import ButtonFollow from '../Button/ButtonFollow'
 
 interface UserProfileContentProps {
   user: User
@@ -15,9 +14,6 @@ export function UserProfileContent({
   user,
   className = '',
 }: UserProfileContentProps) {
-  const handleFollow = () => {
-    toastInfo('Upcoming feature!')
-  }
   return (
     <div className={className}>
       <div className="flex justify-between space-x-4">
@@ -35,12 +31,10 @@ export function UserProfileContent({
             )}
           </h2>
           <span className="text-[15px]">{user.username}</span>
-          <p className="text-muted-foreground text-[15px]">
-            {user.occupation} at{' '}
-            <span className="hover:underline underline-offset-2 text-[#0095f6] cursor-pointer">
-              @{user.company.toLowerCase()}
-            </span>
-          </p>
+          <p
+            className="text-muted-foreground text-[15px]"
+            dangerouslySetInnerHTML={{ __html: renderBio(user.bio) }}
+          ></p>
           <div className="flex items-center pt-2">
             <span className="text-muted-foreground">
               {formatNumber(user.followers)} followers
@@ -54,7 +48,7 @@ export function UserProfileContent({
           </AvatarFallback>
         </Avatar>
       </div>
-      <FollowButton marginTop={4} className="w-full" onClick={handleFollow} />
+      <ButtonFollow className="w-full mt-5" user={user} />
     </div>
   )
 }

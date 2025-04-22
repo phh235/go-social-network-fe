@@ -1,5 +1,5 @@
-import { DropdownFilterPost } from '../Item/DropdownFilterPost'
-import { DropdownMenuList } from '../Item/DropdownMenuList'
+import { DropdownFilterPost } from '../Dropdown/DropdownFilterPost'
+import { DropdownMenuList } from '../Dropdown/DropdownMenuList'
 
 const Header = () => {
   return (

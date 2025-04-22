@@ -4,7 +4,6 @@ export interface User {
   fullName: string
   avatarUrl: string
   followers: number
-  occupation: string
-  company: string
+  bio: string
   isVerified: boolean
 }

@@ -134,7 +134,10 @@ body,
 #__next {
   height: 100%;
 }
-
+html body[data-scroll-locked] {
+  overflow: visible !important;
+  margin-right: 0 !important;
+}
 *,
 *::before,
 *::after {
@@ -156,7 +159,7 @@ body,
 }
 .custom-hover-bg.rounded-full::before {
   border-radius: 9999px !important;
-  background-color: #f0f0f0 !important;
+  background-color: #f5f5f5 !important;
 }
 .dark .custom-hover-bg.rounded-full::before {
   border-radius: 9999px !important;

@@ -10,8 +10,8 @@ import {
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { ModalCreatePost } from '../Item/ModalCreatePost'
-import { DropdownMenuList } from '../Item/DropdownMenuList'
+import { DialogCreatePost } from '../Dialog/DialogCreatePost'
+import { DropdownMenuList } from '../Dropdown/DropdownMenuList'
 
 const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
   const pathname = usePathname()
@@ -85,7 +85,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
             </Link>
           )
         })}
-        <ModalCreatePost open={open} onOpenChange={setOpen} />
+        <DialogCreatePost open={open} onOpenChange={setOpen} />
       </div>
     )
   }
@@ -93,7 +93,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
   return (
     <div className="w-[76px] h-screen bg-transparent flex flex-col items-center px-0 py-3 fixed left-0 top-0 z-50">
       <div>logo</div>
-      <div className="flex flex-col items-center gap-4 flex-1 justify-center">
+      <div className="flex flex-col items-center gap-3 flex-1 justify-center">
         {navLinks.map((link, index) => {
           if (link.isButton) {
             return (
@@ -121,7 +121,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
       <div className="flex flex-col items-center pb-6">
         <DropdownMenuList />
       </div>
-      <ModalCreatePost open={open} onOpenChange={setOpen} />
+      <DialogCreatePost open={open} onOpenChange={setOpen} />
     </div>
   )
 }
