@@ -5,14 +5,14 @@ import {
 } from '@/components/ui/hover-card'
 import Image from 'next/image'
 import verifiedIcon from '@/app/assets/svg/verified.svg'
-import { UserProfileContent } from './UserProfileContent'
 import { User } from '@/models/User'
+import { UserProfileContent } from '../Item/UserProfileContent'
 
-interface HoverCardInfoProps {
+interface CardHoverInfoProps {
   user: User
 }
 
-export function HoverCardInfo({ user }: HoverCardInfoProps) {
+export function CardHoverInfo({ user }: CardHoverInfoProps) {
   return (
     <HoverCard openDelay={250} closeDelay={250}>
       <HoverCardTrigger asChild>

@@ -1,7 +1,4 @@
 import { Post } from '@/models/Post'
-import { User } from '@/models/User'
-
-// Import users data for reference
 import { usersData } from './usersData'
 
 export const postsData: Post[] = [
@@ -86,6 +83,21 @@ export const postsData: Post[] = [
       'https://hoidanit.vn/images/831943428e6baa517ef865610fbe5ee32.jpeg',
       'https://hiu.vn/wp-content/uploads/2023/05/next-js-training.png',
       'https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/nextjs_f42706b59a.jpg',
+    ],
+  },
+  {
+    id: '7',
+    user: usersData[6],
+    timePosted: '4h',
+    content:
+      'The native Next.js platform. Made by the creators of Next.js, Vercel is designed to build, scale, and secure your Next.js apps.',
+    likes: 1231228,
+    comments: 45123,
+    reposts: 1122,
+    shares: 81231,
+    images: [
+      'https://assets.vercel.com/image/upload/v1711040074/front/framework%20pages/Vercel_Next_OG.png',
+      // 'https://images.ctfassets.net/23aumh6u8s0i/c04wENP3FnbevwdWzrePs/1e2739fa6d0aa5192cf89599e009da4e/nextjs',
     ],
   },
 ]

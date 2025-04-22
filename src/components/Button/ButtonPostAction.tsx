@@ -1,7 +1,7 @@
 import { formatNumber } from '@/utils'
 import { ReactNode } from 'react'
 
-interface PostActionButtonProps {
+interface ButtonPostActionProps {
   icon: ReactNode
   count?: number
   onClick?: () => void
@@ -9,13 +9,13 @@ interface PostActionButtonProps {
   activeColor?: string
 }
 
-const PostActionButton = ({
+const ButtonPostAction = ({
   icon,
   count,
   onClick,
   isActive = false,
   activeColor = '#ff0034',
-}: PostActionButtonProps) => {
+}: ButtonPostActionProps) => {
   return (
     <>
       <button
@@ -43,4 +43,4 @@ const PostActionButton = ({
   )
 }
 
-export default PostActionButton
+export default ButtonPostAction

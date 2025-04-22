@@ -18,6 +18,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchProps>(
           {...props}
           type="text"
           ref={ref}
+          autoFocus={true}
           className="w-full px-2 focus-visible:outline-none text-[15px]"
         />
         <Settings2 size={20} className="text-[#b8b8b8] dark:text-[#4d4d4d] cursor-pointer" />

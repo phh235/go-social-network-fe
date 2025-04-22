@@ -3,7 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
-import { ModalCreatePost } from '../Item/ModalCreatePost'
+import { DialogCreatePost } from '../Dialog/DialogCreatePost'
 
 export function CreatePostInput() {
   const [open, setOpen] = useState(false)
@@ -32,7 +32,7 @@ export function CreatePostInput() {
           </Button>
         </div>
       </div>
-      <ModalCreatePost open={open} onOpenChange={setOpen} />
+      <DialogCreatePost open={open} onOpenChange={setOpen} />
     </div>
   )
 }

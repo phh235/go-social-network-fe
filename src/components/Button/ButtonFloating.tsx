@@ -1,8 +1,8 @@
 import { Plus } from '@phosphor-icons/react'
 import { useState } from 'react'
-import { ModalCreatePost } from '../Item/ModalCreatePost'
+import { DialogCreatePost } from '../Dialog/DialogCreatePost'
 
-export function FloatingActionButton() {
+export function ButtonFloating() {
   const [open, setOpen] = useState(false)
   return (
     <div className="fixed bottom-6 right-6 z-40 hidden md:block">
@@ -12,7 +12,7 @@ export function FloatingActionButton() {
       >
         <Plus size={26} weight="bold" />
       </button>
-      <ModalCreatePost open={open} onOpenChange={setOpen} />
+      <DialogCreatePost open={open} onOpenChange={setOpen} />
     </div>
   )
 }
