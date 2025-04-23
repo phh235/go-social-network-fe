@@ -53,7 +53,7 @@ const Sidebar = ({ isMobile = false }: { isMobile?: boolean }) => {
     {
       href: '/_andrewhhh',
       icon: (
-        <User size={26} weight={pathname === '/profile' ? 'fill' : 'bold'} />
+        <User size={26} weight={pathname === '/_andrewhhh' ? 'fill' : 'bold'} />
       ),
       active: pathname === '/_andrewhhh',
     },

@@ -145,7 +145,7 @@ export function CardPost({ post, user }: CardPostProps) {
                             : images.length === 2
                               ? 'w-[calc(50%-4px)] md:w-[calc(50%-4px)]'
                               : 'min-w-[200px] w-[250px] md:w-[300px]'
-                        } ${images.length === 1 ? 'max-h-[500px]' : 'h-[320px]'} overflow-hidden rounded-[8px] transition-all duration-200 active:scale-95`}
+                        } ${images.length === 1 ? 'max-h-[500px]' : 'h-[230px] md:h-[320px]'} overflow-hidden rounded-[8px] transition-all duration-200 active:scale-95`}
                         onMouseDown={
                           images.length !== 2 ? handleMouseDown : undefined
                         }
