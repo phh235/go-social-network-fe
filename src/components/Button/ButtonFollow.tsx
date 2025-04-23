@@ -36,7 +36,7 @@ const ButtonFollow = ({
     <>
       <Button
         variant={isFollowing ? 'outline' : 'default'}
-        className={`font-bold h-[34px] w-[104px] text-[15px] ${className} ${isFollowing ? 'text-[#999999] hover:text-[#999999] dark:text-[#777777] dark:hover:text-[#777777]' : ''}`}
+        className={`font-bold w-[104px] text-[15px] ${className}`}
         onClick={handleClick}
       >
         {isFollowing ? 'Following' : 'Follow'}
