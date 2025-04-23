@@ -1,13 +1,29 @@
-import { CardContent } from '@/components/Card/CardContent'
+'use client'
 
-export default function ProfilePage() {
+import React from 'react'
+import { CardPost } from '@/components/Card/CardPost'
+import { postsData } from '@/data/postsData'
+
+export default function ThreadsPage({
+  params: paramsPromise,
+}: {
+  params: Promise<{ username: string }>
+}) {
+  const params = React.use(paramsPromise)
+  const { username } = params
+  const userPosts = postsData.filter((post) => post.user.username === username)
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
-      <CardContent>
-        <div className="flex items-center justify-center px-3 md:px-6 py-3">
-          <h1 className="text-3xl font-bold">Profile</h1>
+    <div className="mt-4">
+      {userPosts.length > 0 ? (
+        userPosts.map((post) => (
+          <CardPost key={post.id} post={post} user={post.user} />
+        ))
+      ) : (
+        <div className="py-8 text-center text-[#999999] dark:text-[#777777]">
+          No threads yet
         </div>
-      </CardContent>
-    </main>
+      )}
+    </div>
   )
 }
