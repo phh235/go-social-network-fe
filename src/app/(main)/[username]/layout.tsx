@@ -12,6 +12,8 @@ import { DialogEditProfile } from '@/components/Dialog/DialogEditProfile'
 import TabsProfile from '@/components/Tabs/TabsProfile'
 import Image from 'next/image'
 import verifiedIcon from '@/app/assets/svg/verified.svg'
+import { PhotoProvider, PhotoView } from 'react-photo-view'
+import 'react-photo-view/dist/react-photo-view.css'
 
 export default function ProfileLayout({
   children,
@@ -53,15 +55,19 @@ export default function ProfileLayout({
             </div>
             <span className="-mt-1.5 text-[15px]">{user.username}</span>
           </div>
-          <Avatar className="w-16 h-16 md:w-21 md:h-21 rounded-full overflow-hidden">
-            <AvatarImage
-              className="w-full h-full object-cover rounded-full"
-              src={user.avatarUrl}
-            />
-            <AvatarFallback className="rounded-full bg-gray-200 flex items-center justify-center">
-              {user.username.substring(0, 2).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
+          <PhotoProvider>
+            <PhotoView src={user.avatarUrl}>
+              <Avatar className="w-16 h-16 md:w-21 md:h-21 rounded-full overflow-hidden cursor-pointer">
+                <AvatarImage
+                  className="w-full h-full object-cover rounded-full"
+                  src={user.avatarUrl}
+                />
+                <AvatarFallback className="rounded-full bg-gray-200 flex items-center justify-center">
+                  {user.username.substring(0, 2).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+            </PhotoView>
+          </PhotoProvider>
         </div>
         <div className="px-3 md:px-6 mt-2">
           <p
