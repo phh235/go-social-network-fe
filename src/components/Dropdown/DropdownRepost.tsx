@@ -9,6 +9,7 @@ import {
 import useIsMobile from '@/helper'
 import { formatNumber, toastSuccess } from '@/utils'
 import { Repeat } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 interface DropdownRepostProps {
   count?: number
@@ -16,6 +17,7 @@ interface DropdownRepostProps {
 }
 
 export function DropdownRepost({ count, postId }: DropdownRepostProps) {
+  const t = useTranslations()
   const isMobile = useIsMobile()
   const handleRepost = () => {
     toastSuccess('Post reposted')
@@ -37,7 +39,7 @@ export function DropdownRepost({ count, postId }: DropdownRepostProps) {
           onClick={handleRepost}
           className="cursor-pointer py-2.5 rounded-md text-[15px] flex justify-between items-center"
         >
-          Repost <Repeat size={16} className="text-black dark:text-white" />
+          {t('reposts')} <Repeat size={16} className="text-black dark:text-white" />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

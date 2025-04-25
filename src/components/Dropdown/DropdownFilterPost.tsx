@@ -9,11 +9,13 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { CaretDown } from '@phosphor-icons/react'
 import { Check } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export function DropdownFilterPost() {
   const pathname = usePathname()
+  const t = useTranslations()
 
   return (
     <DropdownMenu>
@@ -26,13 +28,13 @@ export function DropdownFilterPost() {
         <DropdownMenuGroup className="p-0.5">
           <Link href="/">
             <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3 flex justify-between">
-              <span>For you</span>
+              <span>{t('follow')}</span>
               {pathname === '/' && <Check className="text-foreground" />}
             </DropdownMenuItem>
           </Link>
           <Link href="/following">
             <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3 flex justify-between">
-              <span>Following</span>{' '}
+              <span>{t('following')}</span>
               {pathname === '/following' && (
                 <Check className="text-foreground" />
               )}
@@ -40,7 +42,7 @@ export function DropdownFilterPost() {
           </Link>
           <Link href="/liked">
             <DropdownMenuItem className="cursor-pointer rounded-[12px] text-[15px] font-bold py-3.5 px-3 flex justify-between">
-              <span>Liked</span>{' '}
+              <span>{t('liked')}</span>
               {pathname === '/liked' && <Check className="text-foreground" />}
             </DropdownMenuItem>
           </Link>

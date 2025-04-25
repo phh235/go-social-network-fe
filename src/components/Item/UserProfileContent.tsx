@@ -4,6 +4,7 @@ import { User } from '@/models/User'
 import Image from 'next/image'
 import verifiedIcon from '@/app/assets/svg/verified.svg'
 import ButtonFollow from '../Button/ButtonFollow'
+import { useTranslations } from 'next-intl'
 
 interface UserProfileContentProps {
   user: User
@@ -14,6 +15,7 @@ export function UserProfileContent({
   user,
   className = '',
 }: UserProfileContentProps) {
+  const t = useTranslations()
   return (
     <div className={className}>
       <div className="flex justify-between space-x-4">
@@ -37,7 +39,7 @@ export function UserProfileContent({
           ></p>
           <div className="flex items-center pt-2">
             <span className="text-muted-foreground">
-              {formatNumber(user.followers)} followers
+              {formatNumber(user.followers)} {t('followers')}
             </span>
           </div>
         </div>
