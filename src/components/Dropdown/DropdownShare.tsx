@@ -9,6 +9,7 @@ import {
 import { formatNumber, toastSuccess } from '@/utils'
 import { LinkIcon, Send } from 'lucide-react'
 import useIsMobile from '@/helper'
+import { useTranslations } from 'next-intl'
 
 interface DropdownShareProps {
   count?: number
@@ -16,6 +17,7 @@ interface DropdownShareProps {
 }
 
 export function DropdownShare({ count, postId }: DropdownShareProps) {
+  const t = useTranslations()
   const isMobile = useIsMobile()
   const handleCopyLink = () => {
     toastSuccess('Link copied to clipboard')
@@ -37,7 +39,7 @@ export function DropdownShare({ count, postId }: DropdownShareProps) {
           onClick={handleCopyLink}
           className="cursor-pointer py-2.5 rounded-md text-[15px] flex justify-between items-center"
         >
-          <span>Copy link</span>{' '}
+          <span>{t('copy_link')}</span>{' '}
           <LinkIcon size={16} className="text-black dark:text-white" />
         </DropdownMenuItem>
       </DropdownMenuContent>

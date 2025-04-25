@@ -12,6 +12,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Images, X } from 'lucide-react'
 import { toastInfo } from '@/utils'
+import ButtonPost from '../Button/ButtonPost'
+import { useTranslations } from 'next-intl'
 
 interface DialogCreatePostProps {
   open: boolean
@@ -24,6 +26,7 @@ export function DialogCreatePost({
 }: DialogCreatePostProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [images, setImages] = useState<string[]>([])
+  const t = useTranslations()
 
   const handleInput = () => {
     const textarea = textareaRef.current
@@ -64,7 +67,7 @@ export function DialogCreatePost({
           className="absolute top-3 left-6 text-black dark:text-white active:scale-90 cursor-pointer transition-all duration-200"
           onClick={() => onOpenChange(false)}
         >
-          <span>Cancel</span>
+          <span>{t('cancel')}</span>
         </button>
         <DialogHeader className="border-b-1 border-[#d5d5d5] dark:border-[#2d2d2d] p-4 py-4">
           <DialogTitle className="text-center">New threads</DialogTitle>
@@ -136,13 +139,7 @@ export function DialogCreatePost({
           <div className="text-[15px] text-[#999999] dark:text-[#777777]">
             Your followers can reply & quote
           </div>
-          <Button
-            variant={'outline'}
-            className="w-fit bg-white dark:bg-[#1a1a1a] font-bold"
-            onClick={handleCreatePost}
-          >
-            Post
-          </Button>
+          <ButtonPost onClick={handleCreatePost} />
         </DialogFooter>
       </DialogContent>
     </Dialog>

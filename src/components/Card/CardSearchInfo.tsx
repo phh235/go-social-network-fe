@@ -5,12 +5,14 @@ import { User } from '@/models/User'
 import { formatNumber, renderBio, toastInfo } from '@/utils'
 import ButtonFollow from '../Button/ButtonFollow'
 import { CardHoverInfo } from '../Card/CardHoverInfo'
+import { useTranslations } from 'next-intl'
 
 interface CardSearchInfoProps {
   user: User
 }
 
 export function CardSearchInfo({ user }: CardSearchInfoProps) {
+  const t = useTranslations()
   return (
     <>
       <div className="border-b-1 border-[#d5d5d5] dark:border-[#2d2d2d] last:border-b-0">
@@ -38,7 +40,7 @@ export function CardSearchInfo({ user }: CardSearchInfoProps) {
                   dangerouslySetInnerHTML={{ __html: renderBio(user.bio) }}
                 ></p>
                 <p className="text-[#999999] dark:text-[#777777] mt-3 mb-2">
-                  {formatNumber(user.followers)} followers
+                  {formatNumber(user.followers)} {t('followers')}
                 </p>
               </div>
               <div>

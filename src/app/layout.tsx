@@ -2,26 +2,33 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
 import { ReactNode } from 'react'
+import { cookies } from 'next/headers'
+import { NextIntlClientProvider } from 'next-intl'
 
 export const metadata = {
   title: 'Go Social',
-  description:
-    'Go Social is a social media platform that connects people from all over the world.',
+  description: 'Go Social connects people worldwide.',
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
+  const cookieStore = await cookies()
+  const langCookie = cookieStore.get('lang')
+  const locale = langCookie?.value === 'vi' ? 'vi' : 'en'
+  const messages = (await import(`../../messages/${locale}.json`)).default
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head />
-      <body className="min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

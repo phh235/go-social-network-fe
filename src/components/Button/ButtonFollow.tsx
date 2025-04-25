@@ -3,6 +3,7 @@ import { Button } from '../ui/button'
 import DialogUnfollow from '@/components/Dialog/DialogUnfollow'
 import { User } from '@/models/User'
 import { toastSuccess } from '@/utils'
+import { useTranslations } from 'next-intl'
 
 interface ButtonFollowProps {
   className?: string
@@ -15,6 +16,7 @@ const ButtonFollow = ({
   user,
   initiallyFollowing = false,
 }: ButtonFollowProps) => {
+  const t = useTranslations()
   const [isFollowing, setIsFollowing] = useState(initiallyFollowing)
   const [showDialogUnfollow, setShowDialogUnfollow] = useState(false)
 
@@ -36,10 +38,10 @@ const ButtonFollow = ({
     <>
       <Button
         variant={isFollowing ? 'outline' : 'default'}
-        className={`font-bold w-[104px] text-[15px] ${className}`}
+        className={`font-bold w-[120px] text-[15px] ${className}`}
         onClick={handleClick}
       >
-        {isFollowing ? 'Following' : 'Follow'}
+        {isFollowing ? t('following') : t('follow')}
       </Button>
       {user && (
         <DialogUnfollow
