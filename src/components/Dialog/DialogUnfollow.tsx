@@ -16,6 +16,33 @@ interface UnfollowDialogProps {
   onConfirm: () => void
 }
 
+const DialogButton = ({
+  children,
+  onClick,
+  isDestructive = false,
+  borderRight = false,
+}: {
+  children: React.ReactNode
+  onClick: () => void
+  isDestructive?: boolean
+  borderRight?: boolean
+}) => {
+  return (
+    <button
+      onClick={(e) => {
+        e.preventDefault()
+        onClick()
+      }}
+      className={`w-full font-bold py-3.5 text-center transition-all duration-200 cursor-pointer border-t border-[#d9d9d9] dark:border-[#383939]  
+        hover:bg-[#fafafa] dark:hover:bg-[#0a0a0a]
+        ${borderRight ? 'border-r' : ''}
+        ${isDestructive ? 'text-[#ff3040]' : 'text-black dark:text-white'}`}
+    >
+      {children}
+    </button>
+  )
+}
+
 const UnfollowDialog = ({
   user,
   open,
@@ -45,22 +72,13 @@ const UnfollowDialog = ({
             </AlertDialogTitle>
           </AlertDialogHeader>
         </div>
-        <div className="border-t border-[#d9d9d9] dark:border-[#383939] grid grid-cols-2">
-          <button
-            onClick={() => onOpenChange(false)}
-            className="cursor-pointer font-bold py-3.5 text-center text-black bg-white dark:bg-[#181818] dark:text-white hover:bg-[#fafafa] dark:hover:bg-[#0a0a0a] border-r border-[#d9d9d9] dark:border-[#383939] transition-all duration-200"
-          >
+        <div className="grid grid-cols-2">
+          <DialogButton onClick={() => onOpenChange(false)} borderRight>
             {t('cancel')}
-          </button>
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              onConfirm()
-            }}
-            className="cursor-pointer font-bold py-3.5 text-center bg-white dark:bg-[#181818] hover:bg-[#fafafa] dark:hover:bg-[#0a0a0a] text-[#ff3040] transition-all duration-200"
-          >
+          </DialogButton>
+          <DialogButton onClick={onConfirm} isDestructive borderRight>
             {t('unfollow')}
-          </button>
+          </DialogButton>
         </div>
       </AlertDialogContent>
     </AlertDialog>
